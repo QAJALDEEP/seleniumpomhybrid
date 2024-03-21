@@ -1,2 +1,4 @@
-
-target/classes/META-INF/maven/qa/seleniumpomhybrid/pom.xml
+/target/
+/.settings/
+/.classpath
+/.project
