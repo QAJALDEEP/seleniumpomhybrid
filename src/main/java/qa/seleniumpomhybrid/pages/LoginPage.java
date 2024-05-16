@@ -52,4 +52,9 @@ public class LoginPage {
 		enterEmail(email).enterPassword(password).clickLoginButton();
 		return new DashboardPage(driver);
 	}
+	
+	public SignupPage clickSignUpLink() {
+		functions.clickElement(signUpLink);
+		return new SignupPage(driver);
+	}
 }

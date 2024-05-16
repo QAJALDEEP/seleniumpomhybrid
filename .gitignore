@@ -1,7 +1,8 @@
 /target/
 /.settings/
-/.classpath
-/.project
-/.test-output
-/.screenshots
-*.gif
+/.classpath/
+/.project/
+/.test-output/
+/.screenshots/
+/screenshots
+/test-output

@@ -8,6 +8,7 @@ import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,6 +16,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
@@ -45,9 +47,9 @@ public class MyFunctions {
 	}
 
 	public WebElement waitForElementToBeClickable(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element));
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-
 
 	public void moveToElement(WebElement element) {
 		waitForElementPresent(element);
@@ -55,8 +57,18 @@ public class MyFunctions {
 	}
 
 	public void enterInputIntoField(WebElement element, String value) {
+		waitForElementPresent(element).sendKeys(value);
+	}
+
+	public void clickElement(WebElement element) {
 		waitForElementPresent(element);
-		element.sendKeys(value);
+		waitForElementToBeClickable(element);
+		element.click();
+	}
+	
+	public void clickElementUsingJs(WebElement element) {
+	    JavascriptExecutor executor = (JavascriptExecutor) driver;
+	    executor.executeScript("arguments[0].click();", element);
 	}
 
 	public void pressTabKey() {
